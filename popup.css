@@ -1,0 +1,52 @@
+.popup {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 550px;
+    height: 300px;
+}
+.popup header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.popup .close {
+    cursor: pointer;
+}
+.content p {
+    font-size: large;
+}
+ul.icons {
+    display: flex;
+}
+ul.icons a {
+    margin-right: 10px;
+}
+.field {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.field input {
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    margin-right: 10px;
+}
+.field img {
+    width: 24px;
+}
+.field button {
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
