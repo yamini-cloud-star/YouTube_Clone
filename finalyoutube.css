@@ -1,0 +1,529 @@
+.container{
+    padding: 0;
+    cursor: pointer;
+}
+
+.firstmenu {
+    position: fixed;
+    width: 100%;
+    background-color: black;
+    top: 0;
+
+}
+
+
+ul.menuicon {
+    display: flex;
+    list-style: none;
+    padding-left: 0px;
+    align-items: center;
+}
+ul.menuicon li img{
+    height: 35px;    
+}
+.icon {
+    flex-grow: 0.1;
+    padding-left: 30px;
+}
+.icon img:hover{
+    background-color: gray;
+    border-radius: 250px;
+    
+}
+.youtubeicon {
+    flex-grow: 0.001;
+}
+.text {
+    flex-grow: 1;
+    color: white;
+}
+input[type="text"] {
+    height: 35px;
+    width: 450px;
+    border-color: white;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+li.searchimg {
+    height: 42px;
+}
+
+.searchimg img {
+    background-color: gray;
+    padding-top: 7.5px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 40px;
+}
+
+li.searchicon {
+    position: relative;
+    z-index: 10;
+}
+
+
+.microphone img { 
+    width: 35px;
+    background-color: gray;
+    border-radius: 250px;
+}
+.videosymbol {
+    flex-grow: 0.20;
+}
+
+.videosymbol img {
+    width: 30px;
+    padding-left: 20px;
+}
+.bellicon {
+    flex-grow: 0.20;
+}
+
+.bellicon img {
+    width: 30px;
+}
+li.profileicon {
+    flex-grow: 0.25;
+}
+span.profiletext {
+    font-size: xx-large;
+    border-radius: 250px;
+    background-color: hotpink;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.secondmenu {
+    padding-top: 104px;
+    height: 100%;
+    display: flex;
+}
+ul.sidemenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    width: 17%;
+    background-color: black;
+    z-index: 5;
+}
+
+.leftSection {
+    width: 275%;
+}
+
+ul.iconmenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 1000px;
+    position: fixed;
+    width: 17%;
+    background-color: black
+}
+
+ul.sidemenu li img{
+    height: 30px;
+}
+
+ul.iconmenu li img{
+    height: 30px;
+}
+
+.sidemenu li span {
+    padding-left: 30px;
+}
+li.\# {
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+li.\@ {
+    padding-top: 30px;
+    text-align: center;
+    width: 50%;
+}
+li.youtext {
+    padding-left: 10px;
+}
+.youtext span {
+    font-size: x-large;
+}
+.sidemainmenu {
+    background-color: black;
+    color: white;
+    width: 17%;
+}
+
+.rightSection {
+    display: flex;
+}
+
+.right {
+    display: flex;
+    padding-left: 230px;
+}
+.horimenu {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+
+.horizontalmenu {
+    padding-top: 30px;
+    list-style: none;
+    height: 60px;
+    align-items: center;
+    background-color: black;
+    display: flex;
+    white-space: nowrap;
+    width: 1090px;
+    overflow-x: scroll;
+}
+
+
+li.leftbutton {
+    background-color: white;
+    border-radius: 50%;
+}
+li.rightbutton {
+    background-color: white;
+    border-radius: 50%
+}
+
+.leftbutton img {
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+}
+.rightbutton img {
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+}
+
+.Image {
+    padding-top: 90.4px;
+}
+
+span.allclass {
+    background-color: white;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+.first {
+    display: inline-block;
+    padding-left: 10px;
+
+}
+
+.sec {
+    display: inline-block;
+    padding-left: 30px;
+    padding-right: 5px;
+}
+
+span.class2 {
+    background-color: gray;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.firstimage img {
+    border-radius: 20px;
+    width: 350px;
+    height: 220px;
+}
+
+.video_details {
+    width: 200px;
+}
+
+.maintitle h3 {
+    display: block;
+    width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+
+}
+
+.maintitle p {
+    display: block;
+    width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+
+}
+
+
+.title h3{
+    display: block;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+
+}
+
+.imageclass {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+}
+.firstimage {
+    display: inline-block;
+    padding-top: 20px;
+    padding-left: 18px;
+}
+
+.logo {
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+}
+.logo img{
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;   
+        
+}
+
+span.title1 {
+    font-weight: bolder;
+    font-size: x-large;
+    padding-left: 20px;
+}
+
+ul.text {
+    width: 395px;
+}
+.text1 {
+    padding-left: 55px;
+    font-size: large;
+    color: gray;
+}
+
+.text2 {
+    padding-left: 55px;
+    padding-top: 10px;
+    color: gray;
+}
+
+span.title1 {
+    font-weight: bolder;
+    font-size: x-large;
+    padding-left: 20px;
+    color: white;
+}
+
+/* video.html css */
+
+.channel-info {
+    display: flex;
+}
+
+img#profile-picture {
+    width: 50px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.buttons {
+    align-content: center;
+    padding-left: 10%;
+}
+
+.buttons button {
+    padding: 10px 20px;
+}
+
+
+
+button#like-button {
+    border-radius: 30px;
+}
+
+button#dislike-button {
+    border-radius: 30px;
+
+}
+
+button#share-button {
+    border-radius: 30px;
+    width: 70px;
+}
+
+button#download-button {
+    border-radius: 30px;
+    width: 70px;
+}
+
+
+
+.contentsection {
+    display: flex;
+    padding-top: 100px;
+    padding-left: 210px;
+}
+.leftsection {
+    padding-left: 20px;
+}
+
+iframe {
+    width: 610px;
+    height: 450px;
+}
+
+.rightsection .numberoneimage {
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+
+}
+
+.Thumbnail img {
+    width: 260px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+
+
+/* for popup page */
+
+header {
+    height: 30px;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.popup {
+    position: fixed;
+    /* display: none; */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* z-index: 1000; */
+    width: 550px;
+    height: 300px;
+}
+
+
+.popup header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 200px;
+}
+.content p {
+    font-size: large;
+    font-weight: 400;
+}
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    width: 300px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+ul.icons {
+    display: flex;
+    list-style: none;
+}
+ul.icons img{
+    width: 50px;
+    height: 50px;
+    padding:10px 20px;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition effect */
+
+}
+
+ul.icons.embed img{
+    
+    background-color: gray;
+}
+
+ul.icons img:hover {
+    transform: scale(1.1); /* Slightly enlarge the image on hover */
+    filter: brightness(1.2); /* Increase brightness on hover */
+}
+
+.field input {
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    margin-right: 10px;
+    font-size: 18px;
+}
+.field button {
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    height: 40px;
+    width: 80px;
+    font-size: large;
+}
+/* for search */
+ul.forsearch {
+    display: flex;
+    list-style: none;
+    padding-right: 220px;
+}
+
+
+li.suggestions {
+    position: absolute;
+    background-color: white;
+    width: 460px;
+    border-radius: 20px;
+}
+
+
+/* for searchresulthtml */
+
+.searchContent {
+    padding-left: 240px;
+    padding-top: 80px;
+}
