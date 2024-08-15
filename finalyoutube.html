@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="icon" href="./images/icons8-youtube-48.png">
+    <link rel="stylesheet" href="./finalyoutube.css">
+</head>
+<body>
+    <div class="container">
+        <div class="firstmenu">
+
+        </div>
+        
+        <div class="secondmenu">
+            <div class="leftSection">
+                <div class="sidemainmenu">
+                    <ul class="sidemenu">
+                        
+                    </ul> 
+                    <ul class="iconmenu">
+                        
+    
+                    </ul> 
+                </div>
+            </div>
+            <div class="rightSection">
+                
+                <div class="horimenu">
+                    
+                    <div class="Image">
+                        <div class="imageclass">
+                            
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            
+                
+
+        </div>
+    
+        
+    </div>
+    
+<script src="./common.js"></script>
+<script src="./sidebar.js"></script>
+
+<script>
+
+//getting video images by API URL
+        
+        const getVideos = async()=>{
+        const videoList = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&locale=en_UK&maxResults=50&regionCode=IN&key=AIzaSyD8yqXGfcpfxCyX-kWWzKa2dXC_jh57Dh8");
+        const videoData = await videoList.json();
+        console.log(videoData)
+        generateVideoHtml(videoData.items);
+       }
+//to play video when click it 
+
+        const generateVideoHtml = (items)=>{
+        let videoHtml = '';
+        items?.forEach(({snippet,id}) => {
+            videoHtml+=` <div class="firstimage">
+                        <div class="videothumbnail">
+                            <a href="./video.html?v=${id}"><img src=${snippet?.thumbnails?.medium?.url} alt=""></a>
+                        </div>
+                        <div class="video_details">
+                            <div class="logo">
+                                <img src="./images/workshop.jpg" alt="">
+                                <h3>${snippet.channelTitle}</h3>
+
+                            </div>
+                            <div class="maintitle">
+                                <h3>${snippet.title}</h3>
+                                <p> Published at ${snippet.publishedAt}</p>
+                            </div>
+                        </div>
+
+                    </div>`      
+        });
+
+        document.getElementsByClassName("imageclass")[0].innerHTML = videoHtml;
+       }
+        getVideos();
+
+    
+
+</script>    
+</body>
+</html>
