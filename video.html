@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>videoDetails</title>
+    <link rel="icon" href="./images/icons8-youtube-48.png">
+    <link rel="stylesheet" href="./finalyoutube.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="firstmenu"></div>
+        <div class="secondmenu">
+            <div class="leftSection">
+                <div class="sidemainmenu">
+                    <ul class="sidemenu">
+                    </ul>
+                    <ul class="iconmenu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentsection">
+            <div class="leftsection">
+                <div class="videoDetails">
+                    <div class="videoplay"></div>
+                    <div class="videotitle"></div>
+                </div>
+
+                <div class="channel-info">
+                    <div class="profile">
+                        <img id="profile-picture" src="./images/colorfull.jpeg">
+                        <h4>VidhyaPuja66!</h4>
+                        <div id="channel-name"></div>
+                        <div id="subscriber-count"></div>
+                    </div>
+                    <div class="buttons">
+                        <button id="like-button"> <i class="fa-solid fa-thumbs-up"></i><span id="like-count">120k</span></button>
+                        <button id="dislike-button"><i class="fa-solid fa-thumbs-down"></i></button>
+                        <button id="share-button"><i class="fa-solid fa-share"></i></button>
+                        <button id="download-button"><i class="fa-solid fa-download"></i></button>
+                    </div>
+
+                    <!-- popsection -->
+
+                    <div class="popup">
+                        <header>
+                            <span>Share in a post</span>
+                            <div class="close"><i class="fa-solid fa-xmark"></i></div>
+                        </header>
+                        <div class="content">
+                            <p>Share this link via</p>
+                            <ul class="icons">
+                                <li class="embed"><img src="./images/icons8-embed-50.png" alt="Embed"></li>
+                                <li class="facebook"><img src="./images/icons8-facebook-logo-48.png" alt="Facebook"></li>
+                                <li class="instagram"><img src="./images/icons8-instagram-logo-48.png" alt="Instagram"></li>
+                                <li class="twitter"><img src="./images/icons8-twitter-logo.gif" alt="Twitter"></li>
+                                <li class="whatsapp"><img src="./images/icons8-whatsapp-logo-94.png" alt="WhatsApp"></li>
+                                <li class="xsymbol"><img src="./images/icons8-x-32.png" alt="Xsymbol"></li>
+                                <li class="email"><img src="./images/icons8-email-50.png" alt="Email"></li>
+                            </ul>
+                            <p>Or copy link</p>
+                            <div class="field">
+                                <img src="./images/icons8-link-50.png" alt="Link">
+                                <input type="text" id="link-input" value="example.com/share-link">
+                                <button class="copy">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rightsection"></div>
+        </div>
+    </div>
+    <script src="./common.js"></script>
+    <script src="./sidebar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const url = window.location.href;
+            const videoDetailurl = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc&key=AIzaSyDX9vR5Hv67BZQ9yXGKvuzS0VMqsGEBon8";
+            const videoId = url.split("=")[1];
+            const videoIframe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="15" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+            document.getElementsByClassName("videoplay")[0].innerHTML = videoIframe;
+
+            const fetchVideoData = async () => {
+                const fetchVideo = await fetch(videoDetailurl);
+                const videoData = await fetchVideo.json();
+                console.log(videoData);
+                generatevideotitledata(videoData.items);
+            };
+
+            const generatevideotitledata = (items) => {
+                let titlecontainer = '';
+                let likecount = [];
+                items?.forEach(({ snippet, statistics }) => {
+                    titlecontainer += `<div class="title">
+                        <div class="titlesub">
+                            <h2>${snippet.title}</h2>
+                            
+                        </div>
+                    </div>`;
+                    likecount.push(statistics.likeCount);
+                });
+                console.log(titlecontainer);
+
+                document.getElementsByClassName("videotitle")[0].innerHTML = titlecontainer;
+
+                document.getElementById('like-button').addEventListener('click', () => {
+                    likecount[0]++;
+                    document.getElementById('like-count').innerText = likecount[0];
+                    console.log(likecount[0]);
+                });
+
+                // pop js
+
+                const shareButton = document.getElementById("share-button");
+                const copyButton = document.querySelector('.copy');
+                const linkInput = document.getElementById('link-input');
+                const popup = document.querySelector(".popup");
+                const closeButton = document.querySelector(".popup .close");
+
+                popup.style.display = 'none';
+
+                shareButton.addEventListener('click', () => {
+                    popup.style.display = (popup.style.display === 'none' || !popup.style.display) ? 'block' : 'none';
+                });
+
+                closeButton.addEventListener('click', () => {
+                    popup.style.display = 'none';
+                });
+
+                copyButton.addEventListener('click', () => {
+                    linkInput.select();
+                    try {
+                        document.execCommand('copy');
+                        copyButton.innerText = "Copied";
+                        setTimeout(() => {
+                            copyButton.innerText = "Copy";
+                            window.getSelection().removeAllRanges();
+                        }, 3000);
+                    } catch (err) {
+                        console.error("Failed to copy text: ", err);
+                    }
+                });
+
+                function getLinkFromIcon(iconElement) {
+                    const classList = iconElement.classList;
+                    switch (true) {
+                        case classList.contains('embed'):
+                            return 'https://embed.com/example';
+                        case classList.contains('facebook'):
+                            return 'https://facebook.com/example';
+                        case classList.contains('instagram'):
+                            return 'https://instagram.com/example';
+                        case classList.contains('twitter'):
+                            return 'https://twitter.com/example';
+                        case classList.contains('whatsapp'):
+                            return 'https://whatsapp.com/example';
+                        case classList.contains('xsymbol'):
+                            return 'https://x_symbol.com/example';
+                        case classList.contains('email'):
+                            return 'https://email.com/example';
+                        default:
+                            return 'https://defaultlink.com';
+                    }
+                }
+
+                const iconListItems = document.querySelectorAll('.icons li');
+
+                iconListItems.forEach(icon => {
+                    icon.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        const link = getLinkFromIcon(icon);
+                        linkInput.value = link;
+                        console.log("Selected link: " + link);
+                    });
+                });
+            };
+
+            fetchVideoData();
+
+            const getVideos = async () => {
+                const videoList = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&locale=en_UK&maxResults=50&regionCode=IN&key=AIzaSyD8yqXGfcpfxCyX-kWWzKa2dXC_jh57Dh8");
+                const videoData = await videoList.json();
+                console.log(videoData);
+                generateVideoHtml(videoData.items);
+            };
+
+            const generateVideoHtml = (items) => {
+                let videoHtml = '';
+                items?.forEach(({ snippet, id }) => {
+                    videoHtml += `<div class="numberoneimage">
+                        <div class="Thumbnail">
+                            <a href="./video.html?v=${id}"><img src=${snippet?.thumbnails?.medium?.url} alt=""></a>
+                        </div>
+                        <div class="video_details">
+                            <div class="logo">
+                                <img src="./images/workshop.jpg" alt="">
+                                <h3>${snippet.channelTitle}</h3>
+                            </div>
+                            <div class="title">
+                                <h3>${snippet.title}</h3>
+                                <p>Published at ${snippet.publishedAt}</p>
+                            </div>
+                        </div>
+                    </div>`
+                });
+
+                document.getElementsByClassName("rightsection")[0].innerHTML = videoHtml;
+            };
+
+            getVideos();
+        });
+    </script>
+</body>
+</html>
