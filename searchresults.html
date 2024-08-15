@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+     <link rel="stylesheet" href="./finalyoutube.css">
+</head>
+<body>
+    <div class="container">
+        <div class="firstmenu">
+
+        </div>
+        <div class="secondmenu">
+            <div class="leftSection">
+                <div class="sidemainmenu">
+                    <ul class="sidemenu">
+                    </ul>
+                    <ul class="iconmenu">
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <div class="videoDetails">
+                <div class="videoplay">
+
+                </div>
+                <div class="videotitle">
+
+                </div>
+            </div>
+            <div class="searchContent">
+
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    <script src="./common.js"></script>
+    <script src="./sidebar.js"></script>
+
+    <script>
+        const searchResults = ()=>{
+            const resultData = JSON.parse(localStorage.getItem("searchResults"));
+            generateVideoHtml(resultData);
+        }
+        
+
+        const generateVideoHtml = (items)=>{
+        let videoHtml = '';
+        items?.forEach(({snippet,id}) => {
+            videoHtml+=` <div class="firstimage">
+                        <div class="videothumbnail">
+                            <a href="./video.html?v=${id}"><img src=${snippet?.thumbnails?.medium?.url} alt=""></a>
+                        </div>
+                        <div class="video_details">
+                            <div class="logo">
+                                <img src="./images/workshop.jpg" alt="">
+                                <h3>${snippet.channelTitle}</h3>
+
+                            </div>
+                            <div class="maintitle">
+                                <h3>${snippet.title}</h3>
+                                <p> Published at ${snippet.publishedAt}</p>
+                            </div>
+                        </div>
+
+                    </div>`      
+        });
+
+        document.getElementsB
+
+        document.getElementsByClassName("searchContent")[0].innerHTML = videoHtml;
+        }
+        searchResults();
+    </script>
+</body>
+</html>
